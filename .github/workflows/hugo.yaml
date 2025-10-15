@@ -2,8 +2,8 @@ name: Deploy Hugo to GitHub Pages
 
 on:
   push:
-    branches: [ "master" ]  # 当推送到 master 分支时触发
-  workflow_dispatch:       # 允许在 GitHub 页面上手动触发
+    branches: [ "master" ]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -21,21 +21,28 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          submodules: recursive  # 重要：确保主题子模块被拉取
+          submodules: recursive
+          fetch-depth: 0
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: 'latest'
-          extended: true         # 重要：使用 Extended 版本
+          extended: true
 
       - name: Build
-        run: hugo --minify       # 构建并压缩输出
+        run: |
+          # 明确指定输出目录
+          hugo --minify --destination public
+          
+          # 检查目录是否存在
+          echo "Build output:"
+          ls -la public/ || echo "No public directory"
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3  # 更新为 v3
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: ./public         # 上传构建生成的 public 文件夹
+          path: ./public
 
   deploy:
     needs: build
@@ -46,4 +53,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4   # 更新为 v4
+        uses: actions/deploy-pages@v4
