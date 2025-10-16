@@ -24,36 +24,20 @@ jobs:
           submodules: recursive
           fetch-depth: 0
 
-      # 添加子模块修复步骤
       - name: Fix submodules
         run: |
           git submodule sync --recursive
           git submodule update --init --force --recursive
-    
-          - name: Setup Hugo
-            uses: peaceiris/actions-hugo@v2
-            with:
-              hugo-version: 'latest'  # 指定稳定版本
-              extended: true
 
-      - name: Debug theme
-        run: |
-          echo "=== 检查主题 ==="
-          ls -la themes/PaperMod/
-          echo "=== 检查内容 ==="
-          find content/ -name "*.md"
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: 'latest'
+          extended: true
 
       - name: Build
         run: |
-          echo "=== 开始构建 ==="
-          hugo version
-          hugo --minify --buildDrafts --destination docs --logLevel info
-          
-          echo "=== 构建结果 ==="
-          echo "docs 目录结构:"
-          find docs/ -type f -name "*.html" | head -20
-          echo "首页内容预览:"
-          head -50 docs/index.html || echo "无首页"
+          hugo --minify --buildDrafts --destination docs
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
