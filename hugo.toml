@@ -6,8 +6,8 @@ publishDir = 'docs'
 
 # 添加必要的配置
 defaultContentLanguage = 'zh-cn'
-#[pagination]
-#  pagerSize = 10
+[pagination]
+  pagerSize = 10
 
 [params]
   defaultTheme = 'auto'
