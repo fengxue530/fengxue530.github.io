@@ -33,8 +33,8 @@ jobs:
       - name: Build
         run: |
           # 明确指定输出目录
-          hugo --minify --destination docs
-          
+          hugo --minify --destination docs --buildDrafts
+        
           # 检查目录是否存在
           echo "Build output:"
           ls -la docs/ || echo "No docs directory"
