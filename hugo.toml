@@ -1,44 +1,81 @@
 baseURL = 'https://fengxue530.github.io/'
 languageCode = 'zh-cn'
 title = '我的 Hugo 博客'
-theme = 'PaperMod'
+theme = 'DoIt'
 publishDir = 'docs'
 
-# 添加必要的配置
+# 基本配置
 defaultContentLanguage = 'zh-cn'
 [pagination]
   pagerSize = 10
+enableEmoji = true
+enableRobotsTXT = true
 
 [params]
-  defaultTheme = 'auto'
+  defaultAppearance = "auto"
+  description = "我的个人博客，分享技术心得和生活感悟"
+  keywords = ["博客", "技术", "编程", "学习"]
+  favicon = "/favicon.ico"
+  highlight = true
 
-  # 修复 homeInfoParams 的格式
-  [params.homeInfoParams]
-    Title = "我的 Hugo 博客"
-    Content = "欢迎来到我的博客"
+  # 修复搜索配置
+  [params.search]
+    enable = true
+    type = "lunr"  # 使用本地搜索
 
-  # 确保启用搜索功能
-  search = true
-
-  # 社交媒体链接（可选）
-  socialIcons = []
+  social = [
+    { name = "github", url = "https://github.com/fengxue530" },
+    { name = "email", url = "mailto:your-email@example.com" }
+  ]
 
 # 菜单配置
 [menu]
   [[menu.main]]
     identifier = "posts"
-    name = "文章"
+    name = "📝 文章"
     url = "/posts/"
     weight = 1
 
   [[menu.main]]
     identifier = "tags"
-    name = "标签"
+    name = "🏷️ 标签"
     url = "/tags/"
     weight = 2
 
   [[menu.main]]
-    identifier = "about"
-    name = "关于"
-    url = "/about/"
+    identifier = "categories"
+    name = "📂 Categories"  # 使用英文
+    url = "/categories/"
     weight = 3
+
+  [[menu.main]]
+    identifier = "about"
+    name = "👤 关于"
+    url = "/about/"
+    weight = 4
+
+
+# 修改后
+[params.author]
+  name = "您的名字"
+  email = "your-email@example.com"
+  link = "https://fengxue530.github.io"
+
+[params.page.comment]
+  enable = false
+
+[params.analytics]
+  google = ""
+
+[params.home.profile]
+  # Gravatar 邮箱, 用于优先在主页显示的头像
+  gravatarEmail = ""
+  # 主页显示头像的 URL
+  avatarURL = "/profile.jpg"
+  # 头像的链接指向的 URL
+  avatarLinkURL = "/static/."
+
+[taxonomies]
+  category = "categories"  # 分类
+  tag = "tags"             # 标签
+  series = "series"        # 系列（可选）
