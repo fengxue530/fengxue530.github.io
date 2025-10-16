@@ -41,7 +41,7 @@ jobs:
         run: |
           echo "=== 开始构建 ==="
           hugo version
-          hugo --minify --buildDrafts --destination docs --verbose
+          hugo --minify --buildDrafts --destination docs --logLevel info
           
           echo "=== 构建结果 ==="
           echo "docs 目录结构:"
