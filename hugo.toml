@@ -2,7 +2,7 @@ baseURL = 'https://fengxue530.github.io/'
 languageCode = 'zh-cn'
 title = '我的 Hugo 博客'
 theme = 'PaperMod'
-publishDir = 'public'
+publishDir = 'docs'
 
 [params]
   defaultTheme = 'auto'
