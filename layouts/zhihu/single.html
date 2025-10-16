@@ -1,0 +1,26 @@
+{{ define "main" }}
+<article class="zhihu-card">
+    <header>
+        <h1>{{ .Title }}</h1>
+        <div class="source">
+            来源：<a href="{{ .Params.source_url }}">知乎原帖</a>
+            作者：{{ .Params.author }}
+        </div>
+    </header>
+
+    <div class="question">
+        <h2>问题：{{ .Params.question }}</h2>
+        <p>{{ .Params.question_detail }}</p>
+    </div>
+
+    <div class="answer">
+        <h3>精选回答</h3>
+        {{ .Content }}
+    </div>
+
+    <div class="insight">
+        <h3>我的解读</h3>
+        {{ .Params.insight | markdownify }}
+    </div>
+</article>
+{{ end }}

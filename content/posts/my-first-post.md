@@ -6,7 +6,7 @@ categories: ["教程"]
 draft: false
 ---
 这是我的第一篇文章，用于测试 Hugo 博客。
-
+{{< disclaimer >}}
 ## 文章内容
 
 这里可以写一些测试内容...
