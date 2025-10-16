@@ -27,17 +27,27 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: 'latest'
+          hugo-version: '0.125.7'  # 指定稳定版本
           extended: true
+
+      - name: Debug theme
+        run: |
+          echo "=== 检查主题 ==="
+          ls -la themes/PaperMod/
+          echo "=== 检查内容 ==="
+          find content/ -name "*.md"
 
       - name: Build
         run: |
-          # 明确指定输出目录
-          hugo --minify --destination docs --buildDrafts
-        
-          # 检查目录是否存在
-          echo "Build output:"
-          ls -la docs/ || echo "No docs directory"
+          echo "=== 开始构建 ==="
+          hugo version
+          hugo --minify --buildDrafts --destination docs --verbose
+          
+          echo "=== 构建结果 ==="
+          echo "docs 目录结构:"
+          find docs/ -type f -name "*.html" | head -20
+          echo "首页内容预览:"
+          head -50 docs/index.html || echo "无首页"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
