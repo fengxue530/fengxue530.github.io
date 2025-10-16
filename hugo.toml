@@ -44,7 +44,7 @@ enableRobotsTXT = true
 
   [[menu.main]]
     identifier = "categories"
-    name = "📂 Categories"  # 使用英文
+    name = "📂 分类"  # 使用英文
     url = "/categories/"
     weight = 3
 
@@ -73,7 +73,7 @@ enableRobotsTXT = true
   # 主页显示头像的 URL
   avatarURL = "/profile.jpg"
   # 头像的链接指向的 URL
-  avatarLinkURL = "/static/."
+  avatarLinkURL = "/posts/"
 
 [taxonomies]
   category = "categories"  # 分类
