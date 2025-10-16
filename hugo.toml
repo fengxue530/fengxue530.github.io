@@ -10,7 +10,9 @@ paginate = 10
 
 [params]
   defaultTheme = 'auto'
-  homeInfoParams =
+
+  # 修复 homeInfoParams 的格式
+  [params.homeInfoParams]
     Title = "我的 Hugo 博客"
     Content = "欢迎来到我的博客"
 
